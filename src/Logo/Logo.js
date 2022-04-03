@@ -5,10 +5,12 @@ import logoImg from "../images/stopwatch.jpg";
 function Logo() {
   return (
     <>
-      <a href="">
-        <img src={logoImg} alt="Logo" />
-        <p>Focus Timer</p>
-      </a>
+      <img
+        src={logoImg}
+        alt="Logo"
+        className="d-inline-block align-text-center"
+      />
+      <span>Focus Timer</span>
     </>
   );
 }
