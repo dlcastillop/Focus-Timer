@@ -8,7 +8,7 @@ function Pomodoro() {
   // Variables del temporizador
   let [minuto1, setMinuto1] = useState(0);
   let [minuto2, setMinuto2] = useState(0);
-  let [segundo1, setSegundo1] = useState(2);
+  let [segundo1, setSegundo1] = useState(1);
   let [segundo2, setSegundo2] = useState(5);
   // Variables para el cambio entre los temporizadores
   let [isPomodoroOn, setIsPomodoroOn] = useState(true);
@@ -28,12 +28,12 @@ function Pomodoro() {
       setMinuto1(0);
       setMinuto2(0);
       setSegundo1(1);
-      setSegundo2(5);
+      setSegundo2(0);
       setIsPomodoroOn(false);
     } else {
       setMinuto1(0);
       setMinuto2(0);
-      setSegundo1(2);
+      setSegundo1(1);
       setSegundo2(5);
       setIsPomodoroOn(true);
       setcantPomodoro((prev) => {
@@ -87,21 +87,19 @@ function Pomodoro() {
   }, [segundo2]);
 
   return (
-    <>
-      <section>
-        <h4>Pomodoro</h4>
-        <h4>Descanso corto</h4>
-        <h4>Descanso largo</h4>
-        <p>
-          {minuto1}
-          {minuto2}:{segundo1}
-          {segundo2}
-        </p>
-        <Boton nombre="Iniciar" fun={contador} />
-        <p>#{cantPomodoro}</p>
-        <audio id="beep" preload="auto" src={beepAudio}></audio>
-      </section>
-    </>
+    <section>
+      <h4>Pomodoro</h4>
+      <h4>Descanso corto</h4>
+      <h4>Descanso largo</h4>
+      <p>
+        {minuto1}
+        {minuto2}:{segundo1}
+        {segundo2}
+      </p>
+      <Boton nombre="Iniciar" fun={contador} />
+      <p>#{cantPomodoro}</p>
+      <audio id="beep" preload="auto" src={beepAudio}></audio>
+    </section>
   );
 }
 
