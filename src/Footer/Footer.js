@@ -15,6 +15,10 @@ function Footer() {
         Instagram
       </a>{" "}
       |{" "}
+      <a href="https://facebook.com/dlcastilloperez" target="_blank">
+        Facebook
+      </a>{" "}
+      |{" "}
       <a href="https://github.com/dlcastillop" target="_blank">
         GitHub
       </a>{" "}

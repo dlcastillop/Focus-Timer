@@ -1,3 +1,4 @@
+/* Landing page */
 a {
   color: black;
 }
@@ -72,5 +73,53 @@ span {
 
   p {
     font-size: 1.5rem;
+  }
+}
+
+/* App */
+/* Pomodoro */
+#pomodoro div#boton {
+  display: flex;
+  justify-content: center;
+}
+
+#pomodoro div#temporizador {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+#pomodoro div#cant {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+#pomodoro span {
+  margin-left: 0;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+#pomodoro span#pomodoro-span {
+  text-align: right;
+}
+
+#pomodoro span#largo-span {
+  text-align: left;
+}
+
+.margen-abajo-pomodoro {
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 575px) {
+  #pomodoro span#pomodoro-span,
+  #pomodoro span#largo-span {
+    text-align: center;
+  }
+
+  #pomodoro span#largo-span {
+    margin-top: 0.5rem;
   }
 }

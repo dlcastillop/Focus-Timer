@@ -90,17 +90,29 @@ function Pomodoro() {
   }, [minuto2, minuto1, segundo2, segundo1]);
 
   return (
-    <section>
-      <h4>Pomodoro</h4>
-      <h4>Descanso corto</h4>
-      <h4>Descanso largo</h4>
-      <p>
+    <section id="pomodoro">
+      <div className="row margen-abajo-pomodoro">
+        <span className="col-sm-4 col-6" id="pomodoro-span">
+          Pomodoro
+        </span>
+        <span className="col-sm-4 col-6">Descanso corto</span>
+        <span className="col-sm-4 col-12" id="largo-span">
+          Descanso largo
+        </span>
+      </div>
+
+      <div id="temporizador" className="margen-abajo-pomodoro">
         {minuto1}
         {minuto2}:{segundo1}
         {segundo2}
-      </p>
-      <Boton nombre="Iniciar" fun={contador} />
-      <p>#{cantPomodoro}</p>
+      </div>
+
+      <div id="boton" className="margen-abajo-pomodoro">
+        <Boton nombre="Iniciar" fun={contador} />
+      </div>
+
+      <div id="cant">#{cantPomodoro}</div>
+
       <audio id="beep" preload="auto" src={beepAudio}></audio>
     </section>
   );

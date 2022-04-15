@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import Pomodoro from "./Pomodoro/Pomodoro";
 import ToDo from "./ToDo/ToDo";
+import Footer from "../Footer/Footer";
 // Imágenes
 import ajustesImg from "../images/gear.jpg";
 
@@ -27,6 +28,7 @@ function App() {
       </nav>
       <Pomodoro />
       <ToDo />
+      <Footer />
     </>
   );
 }
