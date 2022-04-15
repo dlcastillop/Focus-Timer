@@ -6,10 +6,10 @@ import beepAudio from "../../audio/build_testable-projects-fcc_audio_BeepSound.w
 
 function Pomodoro() {
   // Variables del temporizador
-  let [minuto1, setMinuto1] = useState(0);
-  let [minuto2, setMinuto2] = useState(0);
-  let [segundo1, setSegundo1] = useState(1);
-  let [segundo2, setSegundo2] = useState(5);
+  let [minuto1, setMinuto1] = useState(2);
+  let [minuto2, setMinuto2] = useState(5);
+  let [segundo1, setSegundo1] = useState(0);
+  let [segundo2, setSegundo2] = useState(0);
   // Variables para el cambio entre los temporizadores
   let [isPomodoroOn, setIsPomodoroOn] = useState(true);
   let [cantPomodoro, setcantPomodoro] = useState(1);
@@ -18,23 +18,26 @@ function Pomodoro() {
 
   // Controla el cambio entre los temporizadores
   function controlTiempos() {
+    // Descanso corto
     if (isPomodoroOn && cantPomodoro < 4) {
       setMinuto1(0);
-      setMinuto2(0);
+      setMinuto2(5);
       setSegundo1(0);
-      setSegundo2(5);
-      setIsPomodoroOn(false);
-    } else if (isPomodoroOn && cantPomodoro === 4) {
-      setMinuto1(0);
-      setMinuto2(0);
-      setSegundo1(1);
       setSegundo2(0);
       setIsPomodoroOn(false);
+      // Descanso largo
+    } else if (isPomodoroOn && cantPomodoro === 4) {
+      setMinuto1(1);
+      setMinuto2(5);
+      setSegundo1(0);
+      setSegundo2(0);
+      setIsPomodoroOn(false);
+      // Pomodoro
     } else {
-      setMinuto1(0);
-      setMinuto2(0);
-      setSegundo1(1);
-      setSegundo2(5);
+      setMinuto1(2);
+      setMinuto2(5);
+      setSegundo1(0);
+      setSegundo2(0);
       setIsPomodoroOn(true);
       setcantPomodoro((prev) => {
         if (prev === 4) {
@@ -84,7 +87,7 @@ function Pomodoro() {
     }
     const id = setInterval(contador, 1000);
     return () => clearInterval(id);
-  }, [segundo2]);
+  }, [minuto2, minuto1, segundo2, segundo1]);
 
   return (
     <section>
