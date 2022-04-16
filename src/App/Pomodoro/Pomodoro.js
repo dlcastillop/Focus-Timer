@@ -6,10 +6,10 @@ import beepAudio from "../../audio/build_testable-projects-fcc_audio_BeepSound.w
 
 function Pomodoro() {
   // Variables del temporizador
-  let [minuto1, setMinuto1] = useState(0);
-  let [minuto2, setMinuto2] = useState(0);
-  let [segundo1, setSegundo1] = useState(2);
-  let [segundo2, setSegundo2] = useState(5);
+  let [minuto1, setMinuto1] = useState(2);
+  let [minuto2, setMinuto2] = useState(5);
+  let [segundo1, setSegundo1] = useState(0);
+  let [segundo2, setSegundo2] = useState(0);
   // Variables para el cambio entre los temporizadores
   let [isPomodoroOn, setIsPomodoroOn] = useState(true);
   let [cantPomodoro, setcantPomodoro] = useState(1);
@@ -25,29 +25,29 @@ function Pomodoro() {
     // Descanso corto
     if (isPomodoroOn && cantPomodoro < 4) {
       setMinuto1(0);
-      setMinuto2(0);
+      setMinuto2(5);
       setSegundo1(0);
-      setSegundo2(5);
+      setSegundo2(0);
       setIsPomodoroOn(false);
       pomodoroSpan.classList.remove("señalar-temporizador");
       descansoCortoSpan.classList.add("señalar-temporizador");
       descansoLargoSpan.classList.remove("señalar-temporizador");
       // Descanso largo
     } else if (isPomodoroOn && cantPomodoro === 4) {
-      setMinuto1(0);
-      setMinuto2(0);
-      setSegundo1(1);
-      setSegundo2(5);
+      setMinuto1(1);
+      setMinuto2(5);
+      setSegundo1(0);
+      setSegundo2(0);
       setIsPomodoroOn(false);
       pomodoroSpan.classList.remove("señalar-temporizador");
       descansoCortoSpan.classList.remove("señalar-temporizador");
       descansoLargoSpan.classList.add("señalar-temporizador");
       // Pomodoro
     } else {
-      setMinuto1(0);
-      setMinuto2(0);
-      setSegundo1(2);
-      setSegundo2(5);
+      setMinuto1(2);
+      setMinuto2(5);
+      setSegundo1(0);
+      setSegundo2(0);
       setIsPomodoroOn(true);
       setcantPomodoro((prev) => {
         if (prev === 4) {
@@ -129,7 +129,9 @@ function Pomodoro() {
         <Boton nombre="Iniciar" fun={contador} />
       </div>
 
-      <div id="cant">#{cantPomodoro}</div>
+      <div id="cant" className="margen-abajo-pomodoro">
+        #{cantPomodoro}
+      </div>
 
       <audio id="beep" preload="auto" src={beepAudio}></audio>
     </section>

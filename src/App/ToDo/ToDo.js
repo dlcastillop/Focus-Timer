@@ -6,8 +6,16 @@ function ToDo() {
   let [tareas, setTareas] = useState([]);
 
   function añadirTarea() {
+    let textoTarea = document.getElementById("tarea").value;
+
+    document.getElementById("tarea").value = "";
+
     setTareas((prev) => {
-      return [...prev, document.getElementById("tarea").value];
+      if (textoTarea.length === 0 || /^\s+$/.test(textoTarea)) {
+        return [...prev];
+      } else {
+        return [...prev, textoTarea];
+      }
     });
   }
 
@@ -24,26 +32,37 @@ function ToDo() {
   }
 
   return (
-    <section id="to-do">
-      <h2>To-Do</h2>
+    <section id="to-do" className="form-check">
+      <h2 className="margen-abajo-pomodoro">To-Do</h2>
 
-      <ul>
+      <ul className="row margen-abajo-pomodoro">
         {tareas.map((elemento, llave) => (
-          <li key={llave}>
+          <li key={llave} className="col-lg-4 col-sm-6">
             <input
+              className="form-check-input checkbox"
               type="checkbox"
-              className="checkbox"
+              id="flexCheckDefault"
               onClick={terminarTarea}
             />
-            <label htmlFor="" className="label">
+            <label
+              className="form-check-label label"
+              htmlFor="flexCheckDefault"
+            >
               {elemento}
             </label>
           </li>
         ))}
       </ul>
 
-      <input type="text" name="" id="tarea" />
-      <Boton nombre="Añadir" fun={añadirTarea} />
+      <div id="añadir-tareas" className="margen-abajo-pomodoro">
+        <input
+          type="text"
+          className="form-control col-6"
+          id="tarea"
+          placeholder="¿Qué quieres conseguir hoy?"
+        />
+        <Boton nombre="Añadir" fun={añadirTarea} />
+      </div>
     </section>
   );
 }

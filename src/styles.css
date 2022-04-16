@@ -131,14 +131,27 @@ span {
 
 /* App */
 /* To-Do */
-#to-do h2 {
-  text-align: left;
+li {
+  list-style: none;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
-#to-do label {
-  margin-left: 0.25rem;
+#tarea {
+  margin-right: 1rem;
+  width: 15rem;
+}
+
+#añadir-tareas {
+  display: flex;
+  justify-content: center;
 }
 
 .tarea-terminada {
   text-decoration: line-through;
+}
+
+.form-check-input:checked {
+  background-color: #6c63ff;
+  border-color: #6c63ff;
 }
