@@ -128,3 +128,17 @@ span {
     margin-top: 0.5rem;
   }
 }
+
+/* App */
+/* To-Do */
+#to-do h2 {
+  text-align: left;
+}
+
+#to-do label {
+  margin-left: 0.25rem;
+}
+
+.tarea-terminada {
+  text-decoration: line-through;
+}

@@ -13,19 +13,20 @@ function ToDo() {
 
   function terminarTarea() {
     let checkboxs = document.getElementsByClassName("checkbox");
+    let labels = document.getElementsByClassName("label");
 
     for (let i = 0; i < checkboxs.length; i++) {
       if (checkboxs[i].checked === true) {
         checkboxs[i].disabled = true;
+        labels[i].classList.add("tarea-terminada");
       }
     }
-
-    // Falta aplicar CSS rayando el texto de la tarea
   }
 
   return (
-    <section>
-      <h4>To-Do</h4>
+    <section id="to-do">
+      <h2>To-Do</h2>
+
       <ul>
         {tareas.map((elemento, llave) => (
           <li key={llave}>
@@ -34,10 +35,13 @@ function ToDo() {
               className="checkbox"
               onClick={terminarTarea}
             />
-            {" " + elemento}
+            <label htmlFor="" className="label">
+              {elemento}
+            </label>
           </li>
         ))}
       </ul>
+
       <input type="text" name="" id="tarea" />
       <Boton nombre="Añadir" fun={añadirTarea} />
     </section>
