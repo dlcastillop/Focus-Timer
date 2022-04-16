@@ -13,8 +13,61 @@ function Pomodoro() {
   // Variables para el cambio entre los temporizadores
   let [isPomodoroOn, setIsPomodoroOn] = useState(true);
   let [cantPomodoro, setcantPomodoro] = useState(1);
-  // Variables para iniciar/detener la app
+  // Variable para iniciar/detener la app
   let [iniciar, setIniciar] = useState(false);
+  // Variable para el botón
+  let [boton, setBoton] = useState(true);
+
+  // Comienza el temporizador
+  function comenzar() {
+    if (boton) {
+      contador();
+      setBoton(false);
+    } else {
+      return;
+    }
+  }
+
+  // Contador regresivo
+  function contador() {
+    setIniciar(true);
+    if (minuto1 === 0 && minuto2 === 0 && segundo1 === 0 && segundo2 === 0) {
+      let elementoAudio = document.getElementById("beep");
+      elementoAudio.play();
+      controlTiempos();
+    } else if (minuto2 === 0 && segundo1 === 0 && segundo2 === 0) {
+      setMinuto1((prev) => {
+        return prev - 1;
+      });
+      setMinuto2(9);
+      setSegundo1(5);
+      setSegundo2(9);
+    } else if (segundo1 === 0 && segundo2 === 0) {
+      setMinuto2((prev) => {
+        return prev - 1;
+      });
+      setSegundo1(5);
+      setSegundo2(9);
+    } else if (segundo2 === 0) {
+      setSegundo1((prev) => {
+        return prev - 1;
+      });
+      setSegundo2(9);
+    } else {
+      setSegundo2((prev) => {
+        return prev - 1;
+      });
+    }
+  }
+
+  // Inicia/detiene el temporizador
+  useEffect(() => {
+    if (iniciar === false) {
+      return;
+    }
+    const id = setInterval(contador, 1000);
+    return () => clearInterval(id);
+  }, [minuto2, minuto1, segundo2, segundo1]);
 
   // Controla el cambio entre los temporizadores
   function controlTiempos() {
@@ -61,47 +114,6 @@ function Pomodoro() {
     }
   }
 
-  // Contador regresivo
-  function contador() {
-    setIniciar(true);
-    if (minuto1 === 0 && minuto2 === 0 && segundo1 === 0 && segundo2 === 0) {
-      let elementoAudio = document.getElementById("beep");
-      elementoAudio.play();
-      controlTiempos();
-    } else if (minuto2 === 0 && segundo1 === 0 && segundo2 === 0) {
-      setMinuto1((prev) => {
-        return prev - 1;
-      });
-      setMinuto2(9);
-      setSegundo1(5);
-      setSegundo2(9);
-    } else if (segundo1 === 0 && segundo2 === 0) {
-      setMinuto2((prev) => {
-        return prev - 1;
-      });
-      setSegundo1(5);
-      setSegundo2(9);
-    } else if (segundo2 === 0) {
-      setSegundo1((prev) => {
-        return prev - 1;
-      });
-      setSegundo2(9);
-    } else {
-      setSegundo2((prev) => {
-        return prev - 1;
-      });
-    }
-  }
-
-  // Inicia/detiene el temporizador
-  useEffect(() => {
-    if (iniciar === false) {
-      return;
-    }
-    const id = setInterval(contador, 1000);
-    return () => clearInterval(id);
-  }, [minuto2, minuto1, segundo2, segundo1]);
-
   return (
     <section id="pomodoro">
       <div className="row margen-abajo-pomodoro">
@@ -126,7 +138,7 @@ function Pomodoro() {
       </div>
 
       <div id="boton" className="margen-abajo-pomodoro">
-        <Boton nombre="Iniciar" fun={contador} />
+        <Boton nombre="Iniciar" fun={comenzar} />
       </div>
 
       <div id="cant" className="margen-abajo-pomodoro">

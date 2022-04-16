@@ -5,6 +5,7 @@ import Boton from "../../Boton/Boton";
 function ToDo() {
   let [tareas, setTareas] = useState([]);
 
+  // Añade tareas
   function añadirTarea() {
     let textoTarea = document.getElementById("tarea").value;
 
@@ -19,6 +20,7 @@ function ToDo() {
     });
   }
 
+  // Finaliza las tareas
   function terminarTarea() {
     let checkboxs = document.getElementsByClassName("checkbox");
     let labels = document.getElementsByClassName("label");
