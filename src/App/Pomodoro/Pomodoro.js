@@ -6,10 +6,10 @@ import beepAudio from "../../audio/build_testable-projects-fcc_audio_BeepSound.w
 
 function Pomodoro() {
   // Variables del temporizador
-  let [minuto1, setMinuto1] = useState(2);
-  let [minuto2, setMinuto2] = useState(5);
-  let [segundo1, setSegundo1] = useState(0);
-  let [segundo2, setSegundo2] = useState(0);
+  let [minuto1, setMinuto1] = useState(0);
+  let [minuto2, setMinuto2] = useState(0);
+  let [segundo1, setSegundo1] = useState(2);
+  let [segundo2, setSegundo2] = useState(5);
   // Variables para el cambio entre los temporizadores
   let [isPomodoroOn, setIsPomodoroOn] = useState(true);
   let [cantPomodoro, setcantPomodoro] = useState(1);
@@ -18,26 +18,36 @@ function Pomodoro() {
 
   // Controla el cambio entre los temporizadores
   function controlTiempos() {
+    let pomodoroSpan = document.getElementById("pomodoro-span");
+    let descansoCortoSpan = document.getElementById("corto-span");
+    let descansoLargoSpan = document.getElementById("largo-span");
+
     // Descanso corto
     if (isPomodoroOn && cantPomodoro < 4) {
       setMinuto1(0);
-      setMinuto2(5);
+      setMinuto2(0);
       setSegundo1(0);
-      setSegundo2(0);
+      setSegundo2(5);
       setIsPomodoroOn(false);
+      pomodoroSpan.classList.remove("señalar-temporizador");
+      descansoCortoSpan.classList.add("señalar-temporizador");
+      descansoLargoSpan.classList.remove("señalar-temporizador");
       // Descanso largo
     } else if (isPomodoroOn && cantPomodoro === 4) {
-      setMinuto1(1);
-      setMinuto2(5);
-      setSegundo1(0);
-      setSegundo2(0);
+      setMinuto1(0);
+      setMinuto2(0);
+      setSegundo1(1);
+      setSegundo2(5);
       setIsPomodoroOn(false);
+      pomodoroSpan.classList.remove("señalar-temporizador");
+      descansoCortoSpan.classList.remove("señalar-temporizador");
+      descansoLargoSpan.classList.add("señalar-temporizador");
       // Pomodoro
     } else {
-      setMinuto1(2);
-      setMinuto2(5);
-      setSegundo1(0);
-      setSegundo2(0);
+      setMinuto1(0);
+      setMinuto2(0);
+      setSegundo1(2);
+      setSegundo2(5);
       setIsPomodoroOn(true);
       setcantPomodoro((prev) => {
         if (prev === 4) {
@@ -45,6 +55,9 @@ function Pomodoro() {
         }
         return prev + 1;
       });
+      pomodoroSpan.classList.add("señalar-temporizador");
+      descansoCortoSpan.classList.remove("señalar-temporizador");
+      descansoLargoSpan.classList.remove("señalar-temporizador");
     }
   }
 
@@ -92,10 +105,15 @@ function Pomodoro() {
   return (
     <section id="pomodoro">
       <div className="row margen-abajo-pomodoro">
-        <span className="col-sm-4 col-6" id="pomodoro-span">
+        <span
+          className="col-sm-4 col-6 señalar-temporizador"
+          id="pomodoro-span"
+        >
           Pomodoro
         </span>
-        <span className="col-sm-4 col-6">Descanso corto</span>
+        <span className="col-sm-4 col-6" id="corto-span">
+          Descanso corto
+        </span>
         <span className="col-sm-4 col-12" id="largo-span">
           Descanso largo
         </span>

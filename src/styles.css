@@ -113,6 +113,11 @@ span {
   margin-bottom: 0.75rem;
 }
 
+.señalar-temporizador {
+  color: #6c63ff;
+  text-decoration: underline;
+}
+
 @media (max-width: 575px) {
   #pomodoro span#pomodoro-span,
   #pomodoro span#largo-span {
