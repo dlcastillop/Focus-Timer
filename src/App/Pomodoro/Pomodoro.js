@@ -10,6 +10,9 @@ function Pomodoro() {
   let [tiempoPomodoro, setTiempoPomodoro] = useState(25);
   let [tiempoCorto, setTiempoCorto] = useState(5);
   let [tiempoLargo, setTiempoLargo] = useState(15);
+  // Variables para los cambios automáticos
+  let [comenzarDescanso, setComenzarDescanso] = useState(false);
+  let [comenzarPomodoro, setComenzarPomodoro] = useState(false);
   // Variables del temporizador
   let [minuto1, setMinuto1] = useState(2);
   let [minuto2, setMinuto2] = useState(5);
@@ -20,25 +23,30 @@ function Pomodoro() {
   let [cantPomodoro, setcantPomodoro] = useState(1);
   // Variable para iniciar/detener la app
   let [iniciar, setIniciar] = useState(false);
-  // Variable para el botón
+  // Variable para el bloquear/desbloquear el botón Iniciar
   let [boton, setBoton] = useState(true);
 
   // Comienza el temporizador
   function comenzar() {
     if (boton) {
-      contador();
       setBoton(false);
-    } else {
-      return;
+      setIniciar(true);
+      contador();
     }
   }
 
   // Contador regresivo
   function contador() {
-    setIniciar(true);
     if (minuto1 === 0 && minuto2 === 0 && segundo1 === 0 && segundo2 === 0) {
       let elementoAudio = document.getElementById("beep");
       elementoAudio.play();
+      if (isPomodoroOn && comenzarDescanso === false) {
+        setIniciar(false);
+        setBoton(true);
+      } else if (isPomodoroOn === false && comenzarPomodoro === false) {
+        setIniciar(false);
+        setBoton(true);
+      }
       controlTiempos();
     } else if (minuto2 === 0 && segundo1 === 0 && segundo2 === 0) {
       setMinuto1((prev) => {
@@ -133,6 +141,8 @@ function Pomodoro() {
       document.getElementById("ajuste-largo").value,
       10
     );
+    let autoDescanso = document.getElementById("auto-descansos").checked;
+    let autoPomodoro = document.getElementById("auto-pomodoro").checked;
 
     if (isNaN(ajustePomodoro) || isNaN(ajusteCorto) || isNaN(ajusteLargo)) {
       alert("Tienes que llenar todos los campos.");
@@ -145,6 +155,9 @@ function Pomodoro() {
       setTiempoCorto(ajusteCorto);
       setTiempoLargo(ajusteLargo);
     }
+
+    setComenzarDescanso(autoDescanso);
+    setComenzarPomodoro(autoPomodoro);
   }
 
   // Muestra los nuevos ajustes

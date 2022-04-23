@@ -19,27 +19,26 @@ function Ajustes(props) {
 
       <h5>Cambios automáticos</h5>
       <div class="form-check form-switch">
-        <label class="form-check-label" for="flexSwitchCheckDefault">
+        <label class="form-check-label" for="auto-descansos">
           ¿Comenzar automáticamente los descansos?
         </label>
         <input
           class="form-check-input"
           type="checkbox"
           role="switch"
-          id="flexSwitchCheckDefault"
-          checked="true"
+          id="auto-descansos"
         />
       </div>
 
       <div class="form-check form-switch">
-        <label class="form-check-label" for="flexSwitchCheckDefault">
+        <label class="form-check-label" for="auto-pomodoro">
           ¿Comenzar automáticamente los pomodoros?
         </label>
         <input
           class="form-check-input"
           type="checkbox"
           role="switch"
-          id="flexSwitchCheckDefault"
+          id="auto-pomodoro"
         />
       </div>
       <hr />
