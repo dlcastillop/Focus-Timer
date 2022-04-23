@@ -1,27 +1,23 @@
-import { React } from "react";
+import { React, useState } from "react";
 // Componentes
 import Boton from "../../Boton/Boton";
 
-function Ajustes() {
-  function hola() {
-    document.getElementById("pomodoro1").value = "25";
-  }
-
+function Ajustes(props) {
   return (
     <>
-      <h3>Ajustes</h3>
+      <h4>Ajustes</h4>
       <hr />
 
-      <h4>Tiempo (minutos)</h4>
+      <h5>Tiempo (minutos)</h5>
       <label>Pomodoro</label>
-      <input type="text" id="pomodoro1" />
+      <input type="number" id="ajuste-pomodoro" />
       <label>Descanso corto</label>
-      <input type="text" />
+      <input type="number" id="ajuste-corto" />
       <label>Descanso largo</label>
-      <input type="text" />
+      <input type="number" id="ajuste-largo" />
       <hr />
 
-      <h4>Cambios automáticos</h4>
+      <h5>Cambios automáticos</h5>
       <div class="form-check form-switch">
         <label class="form-check-label" for="flexSwitchCheckDefault">
           ¿Comenzar automáticamente los descansos?
@@ -31,6 +27,7 @@ function Ajustes() {
           type="checkbox"
           role="switch"
           id="flexSwitchCheckDefault"
+          checked="true"
         />
       </div>
 
@@ -47,7 +44,7 @@ function Ajustes() {
       </div>
       <hr />
 
-      <Boton nombre="Ok" fun={hola} />
+      <Boton nombre="Ok" fun={props.funcion} />
     </>
   );
 }
