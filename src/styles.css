@@ -161,3 +161,69 @@ li {
   background-color: #6c63ff;
   border-color: #6c63ff;
 }
+
+/* App */
+/* Ajustes */
+#ajustes {
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 30rem;
+  position: absolute;
+  top: 10rem;
+  left: 50%;
+  margin-left: -15rem;
+}
+
+#ajustes div.boton-p {
+  display: flex;
+  justify-content: center;
+}
+
+#ajustes button {
+  text-align: center;
+}
+
+#ajustes h4 {
+  font-weight: 700;
+}
+
+#ajustes #ajuste-pomodoro,
+#ajustes #ajuste-corto,
+#ajustes #ajuste-largo {
+  width: 5rem;
+}
+
+#ajustes .form-switch {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+}
+
+#ajustes #auto-descansos {
+  margin-left: 1rem;
+}
+
+#ajustes #auto-pomodoro {
+  margin-left: 0.6rem;
+}
+
+@media (max-width: 575px) {
+  #ajustes {
+    width: 22rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -11rem;
+  }
+}
+
+/* Cerrar Ajustes */
+.cerrar {
+  visibility: hidden;
+}
+
+/* Abrir ajustes */
+.abrir {
+  visibility: visible;
+}

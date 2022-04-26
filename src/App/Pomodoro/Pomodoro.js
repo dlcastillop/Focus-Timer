@@ -154,6 +154,8 @@ function Pomodoro() {
       setTiempoPomodoro(ajustePomodoro);
       setTiempoCorto(ajusteCorto);
       setTiempoLargo(ajusteLargo);
+      document.getElementById("ajustes").classList.remove("abrir");
+      document.getElementById("ajustes").classList.add("cerrar");
     }
 
     setComenzarDescanso(autoDescanso);

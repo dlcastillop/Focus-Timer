@@ -1,20 +1,30 @@
-import { React, useState } from "react";
+import React from "react";
 // Componentes
 import Boton from "../../Boton/Boton";
 
 function Ajustes(props) {
   return (
-    <>
+    <section id="ajustes" className="cerrar">
       <h4>Ajustes</h4>
       <hr />
 
-      <h5>Tiempo (minutos)</h5>
-      <label>Pomodoro</label>
-      <input type="number" id="ajuste-pomodoro" />
-      <label>Descanso corto</label>
-      <input type="number" id="ajuste-corto" />
-      <label>Descanso largo</label>
-      <input type="number" id="ajuste-largo" />
+      <div className="row">
+        <h5>Tiempo (minutos)</h5>
+        <div className="col-sm-4 col-6">
+          <label>Pomodoro</label>
+          <input type="number" className="form-control" id="ajuste-pomodoro" />
+        </div>
+
+        <div className="col-sm-4 col-6">
+          <label>Descanso corto</label>
+          <input type="number" className="form-control" id="ajuste-corto" />
+        </div>
+
+        <div className="col-sm-4 col-12">
+          <label>Descanso largo</label>
+          <input type="number" className="form-control" id="ajuste-largo" />
+        </div>
+      </div>
       <hr />
 
       <h5>Cambios automáticos</h5>
@@ -43,8 +53,10 @@ function Ajustes(props) {
       </div>
       <hr />
 
-      <Boton nombre="Ok" fun={props.funcion} />
-    </>
+      <div className="boton-p">
+        <Boton nombre="Ok" fun={props.funcion} />
+      </div>
+    </section>
   );
 }
 

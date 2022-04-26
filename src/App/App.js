@@ -8,6 +8,11 @@ import ToDo from "./ToDo/ToDo";
 import ajustesImg from "../images/gear.jpg";
 
 function App() {
+  function abrirAjustes() {
+    document.getElementById("ajustes").classList.remove("cerrar");
+    document.getElementById("ajustes").classList.add("abrir");
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand margen-abajo">
@@ -17,9 +22,8 @@ function App() {
           </Link>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              <li className="nav-item" id="li-ajustes" onClick={abrirAjustes}>
                 <img src={ajustesImg} alt="" className="nav-link" />
-                Ajustes
               </li>
             </ul>
           </div>
