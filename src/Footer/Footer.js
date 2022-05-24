@@ -7,18 +7,6 @@ function Footer() {
         LinkedIn
       </a>{" "}
       |{" "}
-      <a href="https://twitter.com/dlcastillop" target="_blank">
-        Twitter
-      </a>{" "}
-      |{" "}
-      <a href="https://instagram.com/dlcastillop" target="_blank">
-        Instagram
-      </a>{" "}
-      |{" "}
-      <a href="https://facebook.com/dlcastilloperez" target="_blank">
-        Facebook
-      </a>{" "}
-      |{" "}
       <a href="https://github.com/dlcastillop" target="_blank">
         GitHub
       </a>{" "}
