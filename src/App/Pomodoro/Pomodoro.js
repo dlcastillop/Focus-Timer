@@ -3,7 +3,7 @@ import { React, useState, useEffect } from "react";
 import Boton from "../../Boton/Boton";
 import Ajustes from "../Ajustes/Ajustes";
 // Audio
-import beepAudio from "../../audio/build_testable-projects-fcc_audio_BeepSound.wav";
+import beepAudio from "../../audio/service-bell-ring-14610.mp3";
 
 function Pomodoro() {
   // Variables de los tiempos
